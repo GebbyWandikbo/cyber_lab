@@ -4,6 +4,12 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Keamanan tambahan -->
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -13,10 +19,111 @@
     <link href="https://fonts.googleapis.com/css2?family=Matemasie&display=swap" rel="stylesheet">
 
     <!-- CSS -->
-    <link href="../assets/css/style.css" rel="stylesheet">
-    <title>Blue Devil</title>
     <style>
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}        body {
+            background: linear-gradient(90deg, #000, #444);
+            color: #00ff00; /* Teks hijau neon */
+            font-family: 'Matemasie', sans-serif;
+        }
+
+        .clickable {
+            cursor: pointer; /* Kursor pointer saat hover */
+        }
+
+        .zoom-overlay {
+            display: none; /* Sembunyikan overlay secara default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Latar belakang overlay gelap */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Pastikan overlay di atas konten lainnya */
+        }
+
+        .zoom-overlay img {
+            max-width: 90%; /* Gambar maksimal 90% dari lebar jendela */
+            max-height: 90%; /* Gambar maksimal 90% dari tinggi jendela */
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #ff0000; /* Warna merah untuk ikon X */
+            font-size: 30px;
+            cursor: pointer; /* Kursor pointer saat hover */
+        }
+
+        header {
+            background: linear-gradient(90deg, #000, #444);
+            border-bottom: 2px solid #00ff00;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #000, #444);
+            border-top: 3px solid #00ff00;
+            padding: 10px 0;
+            text-align: center;
+            margin-top: 50px;
+            padding: 50px;
+        }
+
+        footer p {
+            margin: 0;
+            color: #00ff00; /* Teks hijau neon */
+        }
+        h5 {
+            display: flex;
+            justify-content: center;
+        }
+        .nav-link {
+        color: #00ff00; /* Hijau neon */
+        text-decoration: none; /* Menghilangkan garis bawah */
+        }
+        .list-group-item{
+            background: linear-gradient(90deg, #000, #444);
+        }
+        #licontent{
+            background: linear-gradient(90deg, #000, #444);
+            padding: 20px;
+        }
+        a {
+        color: #00ff00; /* Hijau neon */
+        text-decoration: none; /* Menghilangkan garis bawah */
+        }
+        #warning{
+            margin: 3px;
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+        #h3_pdf{
+            margin: 15px;
+        }
+        #h3rowname{
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+        #rownavtab{
+            padding-top: 10px;
+        }
+        img #carouselExampleControls{
+            display: flex;
+            justify-content: center;
+        }
     </style>
+
+    <!-- Icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <title>Blue Devil</title>
 </head>
 <body>
     <header>
@@ -25,30 +132,6 @@
                 <a class="navbar-brand" href="wchatt.html">
                     <h1 class="m-3">Blue Devil</h1>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <!-- Navigasi -->
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                          <ul class="navbar-nav">
-                            <li class="nav-item">
-                              <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Data Pemerintah</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Data Institusi</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Tentang Kami</a>
-                            </li>
-                          </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
         </nav>
     </header>
@@ -58,17 +141,88 @@
 
             <!-- Nav & Tab -->
             <div class="row" id="rownavtab">
-                <div class="col-md-12">
-                    <!-- Content -->
+                <ul class="nav nav-tabs">
+                    <li class="nav-item d-flex justify-content-start">
+                    <a class="nav-link" href="bukti_pdf.html">Bukti Dokumen</a>
+                  </li>
+                </ul>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <h3 id="h3rowname">Piscki Febiryansyah Pratama</h3>
+                </div>
+                <hr>
+                <div class="col-md-6 border">
+                    <!-- <span><h5>Bukti 1</h5></span> -->
+                    <img src="../assets/data1.png" class="img-fluid w-100 p-3 clickable" alt="...">
+                    <span class="d-flex justify-content-center p-3">
+                        <button class="w-50" onclick="enlargeImage(this)">View</button>
+                    </span>
+                </div>
+                <div class="col-md-6 border">
+                    <!-- <span><h5>Bukti 2</h5></span> -->
+                    <img src="../assets/data2.png" class="img-fluid w-100 p-3 clickable" alt="...">
+                    <span class="d-flex justify-content-center p-3">
+                        <button class="w-50" onclick="enlargeImage(this)">View</button>
+                    </span>
+                </div>
+                <div class="col-md-6 border">
+                    <!-- <span><h5>Bukti 3</h5></span> -->
+                    <img src="../assets/data3.png" class="img-fluid w-100 p-3 clickable" alt="...">
+                    <span class="d-flex justify-content-center p-3">
+                        <button class="w-50" onclick="enlargeImage(this)">View</button>
+                    </span>
+                </div>
+                <div class="col-md-6 border">
+                    <!-- <span><h5>Bukti Alamat Rumah</h5></span> -->
+                    <img src="../assets/addr.png" class="img-fluid w-100 p-3 clickable" alt="...">
+                    <span class="d-flex justify-content-center p-3">
+                        <button class="w-50" onclick="enlargeImage(this)">View</button>
+                    </span>
+                </div>
+                <div class="col-md-6 border">
+                    <!-- <span><h5>Bukti Foto Keluarga</h5></span> -->
+                    <img src="../assets/fams.jpg" class="img-fluid w-100 p-3 clickable" alt="...">
+                    <span class="d-flex justify-content-center p-3">
+                        <button class="w-50" onclick="enlargeImage(this)">View</button>
+                    </span>
+                </div>
+                <div class="col-md-6 border">
+                    <!-- <span><h5>Bukti Foto Anda</h5></span> -->
+                    <img src="../assets/profile.jpg" class="img-fluid w-100 p-3 clickable" alt="...">
+                    <span class="d-flex justify-content-center p-3">
+                        <button class="w-50" onclick="enlargeImage(this)">View</button>
+                    </span>
                 </div>
             </div>
         </div>
 
+        <!-- Overlay untuk gambar yang diperbesar -->
+        <div class="zoom-overlay" id="zoomOverlay" onclick="closeOverlay()">
+            <span class="close-button" onclick="closeOverlay()">×</span>
+            <img id="zoomImage" src="../" alt="">
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 Blue Devil. All rights reserved.</p>
     </footer>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        function enlargeImage(button) {
+            const img = button.parentElement.parentElement.querySelector('img');
+            const zoomImage = document.getElementById('zoomImage');
+            const zoomOverlay = document.getElementById('zoomOverlay');
+
+            zoomImage.src = img.src;
+            zoomOverlay.style.display = 'flex'; // Tampilkan overlay
+        }
+
+        function closeOverlay() {
+            const zoomOverlay = document.getElementById('zoomOverlay');
+            zoomOverlay.style.display = 'none'; // Sembunyikan overlay
+        }
+    </script>
 </body>
 </html>
