@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}        body {
+            background: linear-gradient(90deg, #000, #444);
+            color: #00ff00; /* Teks hijau neon */
+            font-family: 'Matemasie', sans-serif;
+        }
+
+        .clickable {
+            cursor: pointer; /* Kursor pointer saat hover */
+        }
+
+        .zoom-overlay {
+            display: none; /* Sembunyikan overlay secara default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Latar belakang overlay gelap */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Pastikan overlay di atas konten lainnya */
+        }
+
+        .zoom-overlay img {
+            max-width: 90%; /* Gambar maksimal 90% dari lebar jendela */
+            max-height: 90%; /* Gambar maksimal 90% dari tinggi jendela */
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #ff0000; /* Warna merah untuk ikon X */
+            font-size: 30px;
+            cursor: pointer; /* Kursor pointer saat hover */
+        }
+
+        header {
+            background: linear-gradient(90deg, #000, #444);
+            border-bottom: 2px solid #00ff00;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #000, #444);
+            border-top: 3px solid #00ff00;
+            padding: 10px 0;
+            text-align: center;
+            margin-top: 50px;
+            padding: 50px;
+        }
+
+        footer p {
+            margin: 0;
+            color: #00ff00; /* Teks hijau neon */
+        }
+        h5 {
+        	display: flex;
+        	justify-content: center;
+        }
+        .nav-link {
+        color: #00ff00; /* Hijau neon */
+        text-decoration: none; /* Menghilangkan garis bawah */
+	    }
+	    a {
+        color: #00ff00; /* Hijau neon */
+        text-decoration: none; /* Menghilangkan garis bawah */
+	    }
+        #warning{
+        	margin: 3px;
+        	display: flex;
+        	justify-content: center;
+        	margin: 20px;
+        }
+        #h3_pdf{
+        	margin: 15px;
+        }
+        #h3rowname{
+        	padding-top: 15px;
+        	padding-bottom: 15px;
+        }
+        #rownavtab{
+        	margin-top: 10px;
+        }
+
+
+
+
+
+
